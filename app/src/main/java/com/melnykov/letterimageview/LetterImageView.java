@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.melnykov.initialsimageview.R;
 
 import java.util.Random;
 

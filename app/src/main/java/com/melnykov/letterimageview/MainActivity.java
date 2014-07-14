@@ -7,6 +7,7 @@ import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import com.melnykov.initialsimageview.R;
 
 import java.util.Arrays;
 import java.util.List;

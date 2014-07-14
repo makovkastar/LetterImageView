@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">InitialsImageView</string>
-
+    <string name="app_name">LetterImageView</string>
     <string-array name="colors" translatable="false">
         <item>#33b5e5</item>
         <item>#aa66cc</item>
@@ -18,7 +16,6 @@
         <item>#cccccc</item>
         <item>#888888</item>
     </string-array>
-
     <string-array name="names" translatable="false">
         <item>Aaron Hoe</item>
         <item>Barney Eskin</item>
@@ -47,7 +44,4 @@
         <item>Yong Davenport</item>
         <item>Zack Kent</item>
     </string-array>
-
-    <string name="title_activity_main">LetterImageView</string>
-
 </resources>
