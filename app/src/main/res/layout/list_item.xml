@@ -4,7 +4,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-    <com.melnykov.initialsimageview.LetterImageView
+    <com.melnykov.letterimageview.LetterImageView
             android:id="@+id/iv_avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"

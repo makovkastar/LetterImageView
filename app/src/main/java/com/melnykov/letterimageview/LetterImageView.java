@@ -1,4 +1,4 @@
-package com.melnykov.initialsimageview;
+package com.melnykov.letterimageview;
 
 import android.content.Context;
 import android.graphics.Canvas;
