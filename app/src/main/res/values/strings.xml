@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InitialsImageView</string>
+
+    <string-array name="colors" translatable="false">
+        <item>#33b5e5</item>
+        <item>#aa66cc</item>
+        <item>#99cc00</item>
+        <item>#ffbb33</item>
+        <item>#ff4444</item>
+        <item>#0099cc</item>
+        <item>#9933cc</item>
+        <item>#669900</item>
+        <item>#ff8800</item>
+        <item>#cc0000</item>
+        <item>#eeeeee</item>
+        <item>#cccccc</item>
+        <item>#888888</item>
+    </string-array>
+
+    <string-array name="names" translatable="false">
+        <item>Aaron Hoe</item>
+        <item>Barney Eskin</item>
+        <item>Calvin Zinnes</item>
+        <item>Dale Perella</item>
+        <item>Earl Bruice</item>
+        <item>Fabian Oleski</item>
+        <item>Gabriel Corrado</item>
+        <item>Hector Gamblin</item>
+        <item>Irwin Barger</item>
+        <item>Jack Gonzalez</item>
+        <item>Karl Boari</item>
+        <item>Lacy Patton</item>
+        <item>Marvin Berkowitz</item>
+        <item>Nathan Saar</item>
+        <item>Omar Bogorad</item>
+        <item>Pablo Prezelin</item>
+        <item>Quentin Felix</item>
+        <item>Rafael Engell</item>
+        <item>Seymour Leitman</item>
+        <item>Ted Dickson</item>
+        <item>Ulysses Rowse</item>
+        <item>Vincenzo Larkin</item>
+        <item>Wesley Baltz</item>
+        <item>Xavier Carper</item>
+        <item>Yong Davenport</item>
+        <item>Zack Kent</item>
+    </string-array>
+
+    <string name="title_activity_main">LetterImageView</string>
+
+</resources>
