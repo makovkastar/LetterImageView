@@ -24,7 +24,7 @@ public class LetterImageView extends ImageView {
     }
 
     private void init() {
-        mTextPaint = new Paint();
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(mTextColor);
         mBackgroundColor = randomColor();
     }
