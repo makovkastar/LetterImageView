@@ -37,6 +37,7 @@ public class MainActivity extends ListActivity {
             }
 
             LetterImageView letterImageView = (LetterImageView) convertView.findViewById(R.id.iv_avatar);
+            letterImageView.setOval(true);
             TextView textView = (TextView) convertView.findViewById(R.id.tv_name);
             letterImageView.setLetter(name.charAt(0));
             textView.setText(name);

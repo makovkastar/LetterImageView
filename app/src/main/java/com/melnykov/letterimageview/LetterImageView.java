@@ -15,8 +15,9 @@ public class LetterImageView extends ImageView {
 
     private char mLetter;
     private Paint mTextPaint;
+    private Paint mBackgroundPaint;
     private int mTextColor = Color.WHITE;
-    private int mBackgroundColor;
+    private boolean isOval;
 
     public LetterImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -26,7 +27,9 @@ public class LetterImageView extends ImageView {
     private void init() {
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(mTextColor);
-        mBackgroundColor = randomColor();
+        mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mBackgroundPaint.setStyle(Paint.Style.FILL);
+        mBackgroundPaint.setColor(randomColor());
     }
 
     public char getLetter() {
@@ -44,6 +47,15 @@ public class LetterImageView extends ImageView {
 
     public void setTextColor(int textColor) {
         mTextColor = textColor;
+        invalidate();
+    }
+
+    public void setOval(boolean oval) {
+        isOval = oval;
+    }
+
+    public boolean isOval() {
+        return isOval;
     }
 
     @Override
@@ -53,16 +65,20 @@ public class LetterImageView extends ImageView {
         if (getDrawable() == null) {
             // Set a text font size based on the height of the view
             mTextPaint.setTextSize(canvas.getHeight() - getTextPadding() * 2);
-            // Draw a background color
-            canvas.drawColor(mBackgroundColor);
+            if (isOval()) {
+                canvas.drawCircle(canvas.getWidth() / 2f, canvas.getHeight() / 2f, Math.min(canvas.getWidth(), canvas.getHeight()) / 2f,
+                        mBackgroundPaint);
+            } else {
+                canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), mBackgroundPaint);
+            }
             // Measure a text
             Rect textBounds = new Rect();
             mTextPaint.getTextBounds(String.valueOf(mLetter), 0, 1, textBounds);
             float textWidth = mTextPaint.measureText(String.valueOf(mLetter));
             float textHeight = textBounds.height();
             // Draw the text
-            canvas.drawText(String.valueOf(mLetter), canvas.getWidth() / 2 - textWidth / 2,
-                    canvas.getHeight() / 2 + textHeight / 2, mTextPaint);
+            canvas.drawText(String.valueOf(mLetter), canvas.getWidth() / 2f - textWidth / 2f,
+                    canvas.getHeight() / 2f + textHeight / 2f, mTextPaint);
         }
     }
 
