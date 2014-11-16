@@ -122,8 +122,12 @@ public class LetterImageView extends ImageView {
      * @param shape shape constant
      */
     public void setShape(int shape) {
-        if (shape != SHAPE_RECTANGLE &&
-                shape != SHAPE_OVAL)
+        if (
+                shape != SHAPE_RECTANGLE && // is rectangle
+                shape != SHAPE_OVAL &&      // is oval
+                !isCustomShape(shape)       // is custom shape
+                )
+            // no, throw an error
             throw new IllegalArgumentException("Shape value should be taken from constants");
         this.shape = shape;
     }
@@ -144,6 +148,7 @@ public class LetterImageView extends ImageView {
             // Set a text font size based on the height of the view
             mTextPaint.setTextSize(canvas.getHeight() - getTextPadding(true));
             if (!drawShape(canvas)) {
+                // if children can't draw shape, try to draw it on our own
                 switch (shape) {
                     case SHAPE_RECTANGLE:
                         drawRectangle(canvas);
@@ -234,11 +239,20 @@ public class LetterImageView extends ImageView {
     }
 
     /**
-     * Place your custom implementation of drawShape here.
+     * Draw custom shape. Place your custom implementation of drawShape here.
      * @param canvas canvas
      * @return true if shape was drawn
      */
     protected boolean drawShape(Canvas canvas) {
+        return false;
+    }
+
+    /**
+     * Check if specified shape can be drawn
+     * @param shape shape constant
+     * @return true if shape can be drawn
+     */
+    protected boolean isCustomShape(int shape) {
         return false;
     }
 }
