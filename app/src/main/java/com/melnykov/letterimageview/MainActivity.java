@@ -3,14 +3,13 @@ package com.melnykov.letterimageview;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-import com.melnykov.initialsimageview.R;
 
-import java.util.Arrays;
-import java.util.List;
+import com.melnykov.initialsimageview.R;
 
 
 public class MainActivity extends ListActivity {
@@ -18,31 +17,50 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ListAdapter listAdapter = new SampleListAdapter(this, Arrays.asList(getResources().getStringArray(R.array.names)));
+        LetterImageView.init(this, R.array.colors, LetterImageView.SHAPE_OVAL);
+        Adapter listAdapter = new Adapter(this);
+        String[] names = getResources().getStringArray(R.array.names);
+        for (String name : names)
+            listAdapter.add(new Data(name));
         setListAdapter(listAdapter);
     }
 
-    private static class SampleListAdapter extends ArrayAdapter<String> {
+    private static class Adapter extends ArrayAdapter<Data> {
 
-        public SampleListAdapter(Context context, List<String> objects) {
-            super(context, R.layout.list_item, objects);
+        public Adapter(Context context) {
+            super(context, R.layout.list_item);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            String name = getItem(position);
+            Data data = getItem(position);
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
             }
 
             LetterImageView letterImageView = (LetterImageView) convertView.findViewById(R.id.iv_avatar);
-            letterImageView.setOval(true);
             TextView textView = (TextView) convertView.findViewById(R.id.tv_name);
-            letterImageView.setLetter(name.charAt(0));
-            textView.setText(name);
+            if (position % 2 == 0)
+                letterImageView.setShape(LetterImageView.SHAPE_OVAL);
+            else
+                letterImageView.setShape(LetterImageView.SHAPE_RECTANGLE);
+            // store current color
+            if (data.color == 0)
+                data.color = letterImageView.getShapeColor();
+            letterImageView.setShapeColor(data.color);
+            letterImageView.setLetter(data.text.charAt(0));
+            textView.setText(data.text);
 
             return convertView;
+        }
+    }
+
+    private static class Data {
+        private int color;
+        private String text;
+
+        private Data(String text) {
+            this.text = text;
         }
     }
 }
