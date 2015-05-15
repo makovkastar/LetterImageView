@@ -18,6 +18,7 @@ public class LetterImageView extends ImageView {
     private Paint mBackgroundPaint;
     private int mTextColor = Color.WHITE;
     private boolean isOval;
+    private Rect textBounds;
 
     public LetterImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -25,6 +26,8 @@ public class LetterImageView extends ImageView {
     }
 
     private void init() {
+
+        textBounds = new Rect();
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(mTextColor);
         mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -71,8 +74,7 @@ public class LetterImageView extends ImageView {
             } else {
                 canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), mBackgroundPaint);
             }
-            // Measure a text
-            Rect textBounds = new Rect();
+
             mTextPaint.getTextBounds(String.valueOf(mLetter), 0, 1, textBounds);
             float textWidth = mTextPaint.measureText(String.valueOf(mLetter));
             float textHeight = textBounds.height();
